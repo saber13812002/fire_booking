@@ -79,7 +79,7 @@
         </ul>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2020 <a href="https://2urkeyBooking.com">2urkeyBooking.com</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020 <a href="https://reserve.pardisania.ir">reserve.pardisania.ir</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

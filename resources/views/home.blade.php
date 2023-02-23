@@ -8,7 +8,7 @@
                     <p class="card-text">Qr Code</p>
                 </div>
                 <div class="card-body">
-{{--                    {!! QrCode::color(23,162,184)->size(300)->generate("https://2urkeybooking.com/provider/".Auth()->user()->username); !!}--}}
+{{--                    {!! QrCode::color(23,162,184)->size(300)->generate("https://reserve.pardisania.ir/provider/".Auth()->user()->username); !!}--}}
                 </div>
             </div>
         </div>

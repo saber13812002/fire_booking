@@ -782,7 +782,7 @@
                                                             <td align="center"
                                                                 style="padding:0;Margin:0;padding-bottom:15px;font-size:0">
                                                                 <img
-                                                                    src="https://2urkeybooking.com/public//v2/img/core-img/logo.png"
+                                                                    src="https://reserve.pardisania.ir/public//v2/img/core-img/logo.png"
                                                                     alt="2urkeyBooking Logog"
                                                                     style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"
                                                                     title="2urkeyBooking Logog" width="150"></td>

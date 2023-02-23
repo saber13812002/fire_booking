@@ -35,15 +35,15 @@ class MailManager extends Mailable
     public function build()
     {
         if ($this->status =="Completed"){
-                  return $this->from('info@2urkeybooking.com')
+                  return $this->from('info@pardisania.ir')
             ->view('mailing.completed');
 
         }elseif ($this->status =="Rejected"){
-                  return $this->from('info@2urkeybooking.com')
+                  return $this->from('info@pardisania.ir')
             ->view('mailing.rejected');
 
         }else{
-                  return $this->from('info@2urkeybooking.com')
+                  return $this->from('info@pardisania.ir')
             ->view('mailing.mail');
 
         }
