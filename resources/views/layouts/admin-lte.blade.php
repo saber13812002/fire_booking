@@ -72,9 +72,7 @@
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="https://2uerkey.com">2urkey.com</a></li>
-            <li class="list-inline-item"><a href="https://2urkeyhotels.com">2urkeyhotels.com</a></li>
-            <li class="list-inline-item"><a href="https://2uerkeymenu.com">2urkeymenu.com</a></li>
+            <li class="list-inline-item"><a href="https://berimbasket.ir">berimbasket.ir</a></li>
 
         </ul>
     </div>
