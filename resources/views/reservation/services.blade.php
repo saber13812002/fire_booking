@@ -122,7 +122,7 @@
                                         <input type="hidden" class="hidden" id="time_i" name="time">
                                         <input type="hidden" class="hidden" value="{{$service->id}}" name="service">
                                         <input type="hidden" class="hidden" id="date_i" name="date">
-                                        <button class="btn btn-danger form-control">{{__('Book Now')}}</button>
+                                        <button class="btn btn-danger form-control">{{__('site.Book Now')}}</button>
                                     </form>
                                 </div>
                             </div>

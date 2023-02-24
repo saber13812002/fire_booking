@@ -53,7 +53,7 @@
                     <p class="mb-0">{{Str::limit($service->description, 60 )}}</p>
                       <form action="{{route('ProviderServices',['username'=>$provider->username,'model'=>$service->UserModel->id])}}">
                           <input type="hidden" name="service" value="{{$service->id}}">
-                          <button class="btn btn-success btn-sm add2cart-notify form-control sp-btn" href="#">Book Now</button>
+                          <button class="btn btn-success btn-sm add2cart-notify form-control sp-btn" href="#">{{__('site.Book Now')}}</button>
                       </form>
                   </div>
                 </div>

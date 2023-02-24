@@ -168,7 +168,7 @@ input[type=number]::-webkit-outer-spin-button {
                     <input type="hidden" name="date" id="selected_date">
                     <input type="hidden" name="time" id="selected_time">
                     <input type="hidden" name="total_price" id="total_price_input">
-                    <button type="submit" class="btn btn-success btn-sm  form-control sp-btn">Book Now</button>
+                    <button type="submit" class="btn btn-success btn-sm  form-control sp-btn">{{__('site.Book Now')}}</button>
             </div>
           </div>
         </div>

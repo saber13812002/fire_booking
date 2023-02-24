@@ -138,7 +138,7 @@ class ServiceController extends Controller
                     $a++;
                 }
             } else {
-                return ;
+                return;
             }
             return redirect()->route('services.index');
         }
@@ -159,18 +159,19 @@ class ServiceController extends Controller
         return $discount;
     }
 
-    function price_calculate(Service $service,Request $request){
+    function price_calculate(Service $service, Request $request)
+    {
         $price_after_discount = 0;
-        foreach ($request->persons as $person){
+        foreach ($request->persons as $person) {
             $total = $service->price;
             $discount_amount = AgeGroupDiscount::find($person['discount_id'])->discount_value;
 //           echo  AgeGroupDiscount::find($person['discount_id'])->discount_value . "<br>";
 //           selling price = 15 - (15 * (5 / 100)) = $14.25
 //            echo $service->price - (AgeGroupDiscount::find($person['discount_id'])->discount_value * (AgeGroupDiscount::find($person['discount_id'])->discount_value / 100)). "<br>";
-        $price_after_discount += ($total - ($total * ($discount_amount/100))) * $person['person_count'];
+            $price_after_discount += ($total - ($total * ($discount_amount / 100))) * $person['person_count'];
 
         }
-                echo $price_after_discount;
+        echo $price_after_discount;
 
     }
 
@@ -183,8 +184,8 @@ class ServiceController extends Controller
     public function duplicate(Service $service)
     {
         $newService = $service->replicate();
-        if($newService->save()){
-            return redirect()->route('services.edit',$newService->id);
+        if ($newService->save()) {
+            return redirect()->route('services.edit', $newService->id);
         }
     }
 
@@ -207,7 +208,7 @@ class ServiceController extends Controller
 
     public function getDates(Service $service)
     {
-        return ServiceTime::select('id','service_id','date')->where('service_id',$service->id)->where('date','>=',date('Y/m/d'))->groupBy('date')->get();
+        return ServiceTime::select('id', 'service_id', 'date')->where('service_id', $service->id)->where('date', '>=', date('Y/m/d'))->groupBy('date')->get();
 //        return view('services.datep', compact('service'));
     }
 
@@ -219,8 +220,8 @@ class ServiceController extends Controller
 
     public function getTimes(Service $service, $date)
     {
-        $c_date = date('Y/m/d', ($date + 86400   ) );
-        $t_date = date('Y-m-d', ($date + 86400 )  );
+        $c_date = date('Y/m/d', ($date + 86400));
+        $t_date = date('Y-m-d', ($date + 86400));
         $times = $service->serviceTimes->where('date', $c_date);
         $amount = $service->amount;
         return view('services.timep', compact('service', 'times', 't_date', 'amount'));
