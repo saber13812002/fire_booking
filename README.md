@@ -10,11 +10,17 @@ please review saber refactor TODO
  - php artisan serve
  - login with this super-admin@gmail.com as email
  - password as password
+ - set STORAGE_PATH in .env for saving images as i describe at the end of this document
 
 ![admin-panel-booking-system-laravel](fire-admin-panel.PNG)
 
 
 ![add-model](fire-add-model.PNG)
+
+
+## storage config
+
+update env file for server and local in local you need to set STORAGE_PATH in .env empty and for your server
 
 ## License
 
