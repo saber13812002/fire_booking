@@ -1,8 +1,18 @@
 <?php
 
+use App\Http\Controllers\AgeGroupDiscountController;
+use App\Http\Controllers\ArgumentController;
+use App\Http\Controllers\CancelPolicyController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ConfigurationController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CustomFieldController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RateController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserModelController;
 use Illuminate\Support\Facades\Route;
 
 /*
