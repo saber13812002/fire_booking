@@ -76,19 +76,19 @@ Route::group(['prefix' => 'Language', 'middleware' => 'auth'], function () {
     Route::post('/translate/{language}', 'LanguageController@update')->name('languages.translate.store');
 });
 
-Route::resources([
-    'configurations' => ConfigurationController::class,
-    'settings' => SettingController::class,
-    'category' => CategoryController::class,
-    'model' => UserModelController::class,
-    'services' => ServiceController::class,
-    'customer' => CustomerController::class,
-    'rate' => RateController::class,
-    'custom_fields' => CustomFieldController::class,
-    'age_group_discount' => AgeGroupDiscountController::class,
-    'cancel_policy' => CancelPolicyController::class,
-    'arguments' => ArgumentController::class,
-]);
+//Route::resources([
+//    'configurations' => ConfigurationController::class,
+//    'settings' => SettingController::class,
+//    'category' => CategoryController::class,
+//    'model' => UserModelController::class,
+//    'services' => ServiceController::class,
+//    'customer' => CustomerController::class,
+//    'rate' => RateController::class,
+//    'custom_fields' => CustomFieldController::class,
+//    'age_group_discount' => AgeGroupDiscountController::class,
+//    'cancel_policy' => CancelPolicyController::class,
+//    'arguments' => ArgumentController::class,
+//]);
 
 
 Route::get('/category/duplicate/{category}', 'CategoryController@duplicate')->name('category.duplicate');
