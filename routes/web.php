@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -87,9 +89,9 @@ Route::get('/customer/{customer}/reservations', 'CustomerController@reservations
 Route::post('/services/TimeSchemaCreator', 'ServiceController@TimeSchemaCreator');
 Route::post('/services/update/{service}', 'ServiceController@update')->name('services.update1');
 Route::get('/services/rates/{service}', 'ServiceController@Rates')->name('services.rates');
-Route::get('/services/getDates/{service}', 'ServiceController@getDates');
+Route::get('/services/getDates/{service}', [ServiceController::class, 'getDates']);
 Route::get('/services/getModels/{id}', 'ServiceController@getModels');
-Route::get('/services/getTimes/{service}/{date}', 'ServiceController@getTimes');
+Route::get('/services/getTimes/{service}/{date}', [ServiceController::class, 'getTimes']);
 Route::get('models/getServices/{UserModel}', 'UserModelController@getServices');
 
 
@@ -99,7 +101,7 @@ Route::get('/provider/{username}/search/', 'HomeController@search')->name('provi
 Route::post('/provider/{username}/reservation', 'HomeController@reservation')->name('customer.reservation');
 Route::get('/provider/{username}/{category}', 'HomeController@ProviderCategory')->name('ProviderCategory');
 Route::get('/provider/{username}/{model}/Services/', 'HomeController@ProviderServices')->name('ProviderServices');
-Route::post('/provider/{provider}/{service}/finish', 'HomeController@reservation_form')->name('reservation_form');
+Route::post('/provider/{provider}/{service}/finish', [HomeController::class, 'reservation_form'])->name('reservation_form');
 Route::post('/services/price_calculate/{service}', 'ServiceController@price_calculate');
 
 Route::get('/arguments/provider/{username}', 'ArgumentController@provider_arguments')->name('provider.provider_arguments');

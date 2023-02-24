@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+
+Route::get('provider/{username}/categories', [ProviderController::class, 'categories']);
+Route::get('provider/{service}/dates', [ProviderController::class, 'byServiceGetDates']);
+Route::get('provider/{service}/date/{date}', [ProviderController::class, 'byDateGetTimes']);
