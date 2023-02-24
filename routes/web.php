@@ -1,18 +1,5 @@
 <?php
 
-use App\Http\Controllers\AgeGroupDiscountController;
-use App\Http\Controllers\ArgumentController;
-use App\Http\Controllers\CancelPolicyController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ConfigurationController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\CustomFieldController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RateController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserModelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +25,7 @@ Route::get('/preview', 'HomeController@preview')->name('preview');
 Route::group(['prefix' => 'Users', 'middleware' => 'auth'], function () {
     Route::get('/profile/{user}', 'UserController@profile')->name('users.profile');
     Route::get('/edit/{user}', 'UserController@edit')->name('users.edit')->middleware('permission:Manage User');
-    Route::patch('/profile/{user}/update', [UserController::class, 'update'])->name('users.update');
+    Route::patch('/profile/{user}/update', [\App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     Route::get('/users', 'UserController@index')->name('users.all')->middleware('permission:Manage User');
     Route::get('/users/create', 'UserController@create')->name('users.create');
     Route::post('/delete_user/{user}', 'UserController@delete')->name('users.delete')->middleware('permission:Manage User');
@@ -76,19 +63,19 @@ Route::group(['prefix' => 'Language', 'middleware' => 'auth'], function () {
     Route::post('/translate/{language}', 'LanguageController@update')->name('languages.translate.store');
 });
 
-//Route::resources([
-//    'configurations' => ConfigurationController::class,
-//    'settings' => SettingController::class,
-//    'category' => CategoryController::class,
-//    'model' => UserModelController::class,
-//    'services' => ServiceController::class,
-//    'customer' => CustomerController::class,
-//    'rate' => RateController::class,
-//    'custom_fields' => CustomFieldController::class,
-//    'age_group_discount' => AgeGroupDiscountController::class,
-//    'cancel_policy' => CancelPolicyController::class,
-//    'arguments' => ArgumentController::class,
-//]);
+Route::resources([
+    'configurations' => ConfigurationController::class,
+    'settings' => SettingController::class,
+    'category' => CategoryController::class,
+    'model' => UserModelController::class,
+    'services' => ServiceController::class,
+    'customer' => CustomerController::class,
+    'rate' => RateController::class,
+    'custom_fields' => CustomFieldController::class,
+    'age_group_discount' => AgeGroupDiscountController::class,
+    'cancel_policy' => CancelPolicyController::class,
+    'arguments' => ArgumentController::class,
+]);
 
 
 Route::get('/category/duplicate/{category}', 'CategoryController@duplicate')->name('category.duplicate');
@@ -99,9 +86,9 @@ Route::get('/customer/{customer}/reservations', 'CustomerController@reservations
 Route::post('/services/TimeSchemaCreator', 'ServiceController@TimeSchemaCreator');
 Route::post('/services/update/{service}', 'ServiceController@update')->name('services.update1');
 Route::get('/services/rates/{service}', 'ServiceController@Rates')->name('services.rates');
-Route::get('/services/getDates/{service}', [ServiceController::class, 'getDates']);
+Route::get('/services/getDates/{service}', 'ServiceController@getDates');
 Route::get('/services/getModels/{id}', 'ServiceController@getModels');
-Route::get('/services/getTimes/{service}/{date}', [ServiceController::class, 'getTimes']);
+Route::get('/services/getTimes/{service}/{date}', 'ServiceController@getTimes');
 Route::get('models/getServices/{UserModel}', 'UserModelController@getServices');
 
 
@@ -111,7 +98,7 @@ Route::get('/provider/{username}/search/', 'HomeController@search')->name('provi
 Route::post('/provider/{username}/reservation', 'HomeController@reservation')->name('customer.reservation');
 Route::get('/provider/{username}/{category}', 'HomeController@ProviderCategory')->name('ProviderCategory');
 Route::get('/provider/{username}/{model}/Services/', 'HomeController@ProviderServices')->name('ProviderServices');
-Route::post('/provider/{provider}/{service}/finish', [HomeController::class, 'reservation_form'])->name('reservation_form');
+Route::post('/provider/{provider}/{service}/finish', 'HomeController@reservation_form')->name('reservation_form');
 Route::post('/services/price_calculate/{service}', 'ServiceController@price_calculate');
 
 Route::get('/arguments/provider/{username}', 'ArgumentController@provider_arguments')->name('provider.provider_arguments');
