@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Mail\MailManager;
-use Illuminate\Http\Request;
 use App\User;
 use Auth;
-use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Spatie\Permission\Models\Role;
+use Intervention\Image\ImageManagerStatic as Image;
 use Mail;
 
 class UserController extends Controller
@@ -31,7 +29,6 @@ class UserController extends Controller
 
     public function update(User $user, Request $request)
     {
-
         $user->name = $request->name;
         $user->username = $request->username;
         if ($request->password != null) {
@@ -42,7 +39,8 @@ class UserController extends Controller
         if ($request->hasfile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            $path = config('filesystems.storage_path').('/uploads/avatars/' . $filename);
+            $folder = config('filesystems.storage_path') ?: public_path();
+            $path = $folder . ('/uploads/avatars/' . $filename);
             $uploaded_avatar = Image::make($avatar)->resize(300, 300)->save($path);
             $user->avatar = '/uploads/avatars/' . $filename;
         }
@@ -86,8 +84,8 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'hotel_commission'=>$request->hotel_commission,
-            'our_commission'=>$request->our_commission,
+            'hotel_commission' => $request->hotel_commission,
+            'our_commission' => $request->our_commission,
             'password' => Hash::make($request->password),
             'avatar' => '/uploads/avatars/' . $filename,
             'username' => $this->slugify($request->username),
@@ -186,15 +184,18 @@ class UserController extends Controller
             return response()->json(["status" => 600]);
         }
     }
-    public function reservations_view($booking){
+
+    public function reservations_view($booking)
+    {
 //        return $booking;
-       $book = Auth()->user()->Bookings->find($booking);
-        return view('users.reservationsView',compact('book'));
-    }
-    public function provider_reports(){
-        $bookings =   Auth()->user()->Bookings->where('status',1);
-        return view('users.reports',compact('bookings'));
+        $book = Auth()->user()->Bookings->find($booking);
+        return view('users.reservationsView', compact('book'));
     }
 
+    public function provider_reports()
+    {
+        $bookings = Auth()->user()->Bookings->where('status', 1);
+        return view('users.reports', compact('bookings'));
+    }
 
 }

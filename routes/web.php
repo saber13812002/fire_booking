@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,7 @@ Route::get('/preview', 'HomeController@preview')->name('preview');
 Route::group(['prefix' => 'Users', 'middleware' => 'auth'], function () {
     Route::get('/profile/{user}', 'UserController@profile')->name('users.profile');
     Route::get('/edit/{user}', 'UserController@edit')->name('users.edit')->middleware('permission:Manage User');
-    Route::patch('/profile/{user}/update', 'UserController@update')->name('users.update');
+    Route::patch('/profile/{user}/update', [UserController::class, 'update'])->name('users.update');
     Route::get('/users', 'UserController@index')->name('users.all')->middleware('permission:Manage User');
     Route::get('/users/create', 'UserController@create')->name('users.create');
     Route::post('/delete_user/{user}', 'UserController@delete')->name('users.delete')->middleware('permission:Manage User');
