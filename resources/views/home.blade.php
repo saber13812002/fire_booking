@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <i class="fa fa-clock" style="font-size: 2rem; color: #ffc107"></i>
                             <span
-                                style="font-size:1.5rem;font-weight: 900; color: #ffc107">{{Auth()->user()->member->where('status',0)->count()}}</span>
+                                style="font-size:1.5rem;font-weight: 900; color: #ffc107">{{!Auth()->user()??Auth()->user()->member->where('status',0)->count()}}</span>
                         </div>
 
                     </div>
@@ -45,7 +45,7 @@
                         <div class="col-md-12">
                             <i class="fa fa-check" style="font-size: 2rem; color:#28a745"></i>
                             <span
-                                style="font-size:1.5rem;font-weight: 900; color:#28a745">{{Auth()->user()->member->where('status',1)->count()}}</span>
+                                style="font-size:1.5rem;font-weight: 900; color:#28a745">{{!Auth()->user()??Auth()->user()->member->where('status',1)->count()}}</span>
                         </div>
 
                     </div>
